@@ -4,17 +4,21 @@ body {
   background: #e95968;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 0;
+  align-items: center;
+  padding: 5px;
 }
 .container {
   background: #fff;
   padding: 20px;
- 
   border-radius: 12px;
+
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  max-width: 650px;
-  max-height: 100vh;
+  width: 92%;
+  max-height: 90vh;
 }
 
 .form{
@@ -22,6 +26,7 @@ body {
   justify-content: center;
   padding: 10px;
   gap: 10px;
+  width: 80%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -33,8 +38,10 @@ h1 {
 }
 
 .container img{
-  width: 100%;
-  height: 140px;
+  justify-self: center;
+  align-items: center;
+  width: 150px;
+  height: 60px;
 }
 
 .input-section {
@@ -83,7 +90,7 @@ li.achete span {
 
 
 li span {
- width: 60%;
+ width: 50%;
  white-space: normal;
  word-break: break-word;
 }
@@ -129,11 +136,12 @@ li span {
 
 
 ul#liste {
+  width: 100%;
 
   scrollbar-width: 2;
     max-height: 300px; /* Hauteur maximale */
     overflow-y: auto;  /* Défilement vertical */
-    padding-right: 5px; /* Pour éviter que le contenu touche la scrollbar */
+    padding-right: 5px;
   }
 
 
@@ -192,4 +200,15 @@ ul#liste {
    
   }
 
+
+  /***************************************************************************************************/
+
+/* Small screens - responsive */
+@media screen and (max-width: 850px){
+
+  .container{
+    width: 350px;
+  }
   
+
+}

@@ -5,10 +5,10 @@ const clearBtn = document.getElementById("clearBtn");
 
 // --- Sauvegarde des articles (texte, état acheté, prix) ---
 function sauvegarderArticles() {
-  const articles = [...liste.children].map(li => ({
+  const articles = [...liste.children].map((li) => ({
     texte: li.querySelector("span").textContent.trim(),
     achete: li.classList.contains("achete"),
-    prix: parseFloat(li.querySelector(".prix-input").value) || 0
+    prix: parseFloat(li.querySelector(".prix-input").value) || 0,
   }));
   localStorage.setItem("articles", JSON.stringify(articles));
 }
@@ -29,14 +29,20 @@ function calculerTotal() {
 // --- Ajouter un article (depuis saisie ou depuis localStorage) ---
 function ajouterArticle(articleObj) {
   const fromStorage = typeof articleObj === "object" && articleObj !== null;
-  const texte = fromStorage ? (articleObj.texte || "") : itemInput.value.trim();
-  const prixInitial = fromStorage && typeof articleObj.prix === "number" ? articleObj.prix : 0;
+  const texte = fromStorage ? articleObj.texte || "" : itemInput.value.trim();
+  const prixInitial =
+    fromStorage && typeof articleObj.prix === "number" ? articleObj.prix : 0;
   const etatAchete = fromStorage ? !!articleObj.achete : false;
 
   if (texte === "") return;
 
   // Vérifie doublon uniquement pour ajout manuel (pas au chargement)
-  if (!fromStorage && [...liste.children].some(li => li.querySelector("span").textContent === texte)) {
+  if (
+    !fromStorage &&
+    [...liste.children].some(
+      (li) => li.querySelector("span").textContent === texte
+    )
+  ) {
     let erreurBox = document.getElementById("erreurBox");
     if (!erreurBox) {
       erreurBox = document.createElement("div");
@@ -76,11 +82,15 @@ function ajouterArticle(articleObj) {
 
   // Bouton marquer acheté / non
   const btnMarquer = document.createElement("button");
-  btnMarquer.textContent = li.classList.contains("achete") ? "Non acheté" : "Acheté";
+  btnMarquer.textContent = li.classList.contains("achete")
+    ? "Non acheté"
+    : "Acheté";
   btnMarquer.className = "mark-btn";
   btnMarquer.onclick = () => {
     li.classList.toggle("achete");
-    btnMarquer.textContent = li.classList.contains("achete") ? "Non acheté" : "Acheté";
+    btnMarquer.textContent = li.classList.contains("achete")
+      ? "Non acheté"
+      : "Acheté";
     sauvegarderArticles();
     calculerTotal(); // MAJ du total quand on achète/désachète
   };
@@ -99,7 +109,7 @@ function ajouterArticle(articleObj) {
   actions.appendChild(btnSupprimer);
 
   li.appendChild(span);
-  li.appendChild(inputPrix);  // <-- on insère le champ prix juste après le nom
+  li.appendChild(inputPrix); // <-- on insère le champ prix juste après le nom
   li.appendChild(actions);
 
   liste.appendChild(li);
@@ -118,12 +128,23 @@ function viderListe() {
   calculerTotal(); // Total = 0.00
 }
 
-// Ajout avec Entrée
+addBtn.addEventListener("click", () => {
+  ajouterArticle();
+});
+
+// Touche Enter sou klavye (PC + mobile)
 itemInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     ajouterArticle();
   }
 });
+
+// Ajout avec Entrée
+// itemInput.addEventListener("keypress", (e) => {
+//   if (e.key === "Enter") {
+//     ajouterArticle();
+//   }
+// });
 
 addBtn.addEventListener("click", ajouterArticle);
 clearBtn.addEventListener("click", viderListe);
@@ -132,7 +153,7 @@ clearBtn.addEventListener("click", viderListe);
 function activerDragAndDrop() {
   const items = liste.querySelectorAll("li");
 
-  items.forEach(item => {
+  items.forEach((item) => {
     item.addEventListener("dragstart", (e) => {
       e.dataTransfer.setData("text/plain", item.outerHTML);
       item.classList.add("dragging");
@@ -159,22 +180,27 @@ function activerDragAndDrop() {
 }
 
 function getDragAfterElement(container, y) {
-  const draggableElements = [...container.querySelectorAll("li:not(.dragging)")];
-  return draggableElements.reduce((closest, child) => {
-    const box = child.getBoundingClientRect();
-    const offset = y - box.top - box.height / 2;
-    if (offset < 0 && offset > closest.offset) {
-      return { offset: offset, element: child };
-    } else {
-      return closest;
-    }
-  }, { offset: Number.NEGATIVE_INFINITY }).element;
+  const draggableElements = [
+    ...container.querySelectorAll("li:not(.dragging)"),
+  ];
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
 }
 
 // --- Chargement au démarrage ---
 function chargerArticles() {
   const articles = JSON.parse(localStorage.getItem("articles")) || [];
-  articles.forEach(obj => ajouterArticle(obj));
+  articles.forEach((obj) => ajouterArticle(obj));
   calculerTotal();
 }
 chargerArticles();
