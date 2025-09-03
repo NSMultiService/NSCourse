@@ -17,7 +17,6 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   max-width: 100%;
   height: 96vh;
-  max-right: 100%;
 }
 
 .form {
@@ -64,9 +63,6 @@ button {
   font-weight: bold;
 }
 
-button:hover {
-  opacity: 0.9;
-}
 
 ul {
   list-style: none;
@@ -120,6 +116,7 @@ li span {
 
 .clear-btn {
   width: 100%;
+  font-size: 25px;
   margin-top: 15px;
   background: #dc3545;
 }
@@ -137,6 +134,7 @@ li span {
 }
 
 ul#liste {
+ 
   width: 90%;
   scrollbar-width: thin; /* corrigé */
   height: 90vh;
@@ -193,16 +191,20 @@ ul#liste {
   height: 170px;
 }
 
+
+#totalContainer, #totalcontainer span #total{
+  font-size: 1.8rem;
+  background-color: #28A745;
+  color: white;
+}
 /***************************************************************************************************/
 
 /* Small screens - responsive */
 @media screen and (min-width: 650px) {
   .container {
-    width: 100vw;
+    width: 750PX;
     max-height: 90vh;
   }
 
-  .form {
-   width: 300px;
-  }
+  
 }
