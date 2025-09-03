@@ -24,7 +24,8 @@ body {
   justify-content: center;
   padding: 10px;
   gap: 10px;
-  width: 80%;
+  width: 300px;
+  max-width: 80%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -202,7 +203,8 @@ ul#liste {
 /* Small screens - responsive */
 @media screen and (min-width: 650px) {
   .container {
-    width: 750PX;
+    width: 700px;
+    max-width: 76%;
     max-height: 90vh;
   }
 
