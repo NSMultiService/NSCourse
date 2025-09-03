@@ -51,6 +51,7 @@ h1 {
 input {
   flex: 1;
   padding: 8px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
@@ -136,11 +137,10 @@ li span {
 }
 
 ul#liste {
-
   width: 90%;
   scrollbar-width: thin;
-  /* corrigé */
-  height: 90vh;
+  max-height: 300px; /* limite lis la */
+  overflow-y: auto; /* pèmèt scrol */
   padding-right: 5px;
 
 }
@@ -193,13 +193,17 @@ ul#liste {
 }
 
 
-#totalContainer,
-#totalcontainer span #total {
+#totalContainer {
   font-size: 1.8rem;
   background-color: #28A745;
   color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
 }
 
+#total {
+  font-weight: bold;
+}
 /***************************************************************************************************/
 
 /* Small screens - responsive */
