@@ -140,7 +140,7 @@ ul#liste {
   width: 90%;
   scrollbar-width: thin;
   max-height: 300px; /* limite lis la */
-  overflow-y: auto; /* pèmèt scrol */
+  overflow-y: none; /* pèmèt scrol */
   padding-right: 5px;
 
 }
