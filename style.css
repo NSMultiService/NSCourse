@@ -83,6 +83,7 @@ li {
   padding: 8px;
   border-bottom: 1px solid #eee;
   background: #fafafa;
+  box-shadow: 0 8px 12px orangered;
   margin-bottom: 5px;
   border-radius: 6px;
   cursor: grab;
