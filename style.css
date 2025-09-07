@@ -1,230 +1,83 @@
-html, body {
+
+*{
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden; /* retire scroll horizontal */
+  font-family: 'Roboto', sans-serif;
 }
 
-
-
 body {
-  font-family: Arial, sans-serif;
-  background: #e95968;
-  display: grid;
-  font-size: 1rem;
-  place-items: center; /* santre vètikal + orizontal */
-  margin: 0;
-  height: 100vh; /* pran tout wotè ekran an */
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 10px;
+  color: #333;
 }
 
 .container {
   background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  max-width: 600px;
+  width: 100%;
   padding: 20px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 700px;
-  max-width: 100%;
-  height: 96vh;
-  overflow: hidden;
-}
-
-
-.form {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  gap: 10px;
-  width: 400px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  font-family: Georgia;
   text-align: center;
-  color: #333;
-  margin: 10px 0;
+  transition: transform 0.3s ease;
 }
+
+
 
 .container img {
-  width: 150px;
-  height: 60px;
-}
-
-.input-section {
-  display: flex;
-  gap: 10px;
+  width: 120px;
   margin-bottom: 20px;
 }
 
-input {
-  flex: 1;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff6f61;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
 button {
-  padding: 8px 12px;
+  background: #ff6f61;
+  color: #fff;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #28a745;
-  color: white;
-  font-weight: bold;
-}
-
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-  background: #fafafa;
-  box-shadow: 0 8px 12px orangered;
-  margin-bottom: 5px;
-  border-radius: 6px;
-  cursor: grab;
-}
-
-li.achete span {
-  text-decoration: line-through;
-  color: gray;
-}
-
-li span {
-  width: 250px;
-  white-space: normal;
-  word-break: break-word;
-}
-
-.actions button {
-  margin-left: 5px;
-  padding: 6px 10px;
-  font-size: 12px;
-  border-radius: 5px;
-}
-
-.actions {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 5px;
-}
-
-.mark-btn {
-  background: #007bff;
-}
-
-.delete-btn {
-  background: #dc3545;
-}
-
-.clear-btn {
-  width: 100%;
-  font-size: 25px;
-  margin-top: 15px;
-  background: #dc3545;
-}
-
-#erreurBox {
-  display: none;
-  color: red;
-  background-color: white;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  font-weight: bold;
-  position: fixed;
-  top: 0;
-}
-
-ul#liste {
-  width: 90%;
-  scrollbar-width: thin;
-  max-height: 300px; /* limite lis la */
-  overflow-y: auto; /* pèmèt scrol */
-  padding-right: 5px;
-
-}
-
-.achete {
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-
-.prix-input {
-  width: 70px;
-  margin-left: 10px;
-}
-
-#home button a {
-  text-decoration: none;
-  color: white;
+  padding: 12px 25px;
+  border-radius: 50px;
   font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-#home button {
-  width: 100%;
+button:hover {
+  background: #ff3b2f;
 }
 
-#home h1 {
-  margin: 0 5px;
-  font-size: 1.3rem;
-  color: orangered;
+button a {
+  color: #fff;
+  text-decoration: none;
   font-weight: bold;
 }
 
-#home p strong:nth-child(3) {
-  color: orangered;
-}
-
-#home p {
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-#home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#home img {
-  width: 250px;
-  height: 170px;
-}
-
-
-#totalContainer {
-  font-size: 1.8rem;
-  background-color: #28A745;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 8px;
-}
-
-#total {
-  font-weight: bold;
-}
-/***************************************************************************************************/
-
-/* Small screens - responsive */
-@media screen and (min-width: 650px) {
+/* Responsive */
+@media (max-width: 500px) {
   .container {
-    width: 650px;
-    max-width: 80%;
-    max-height: 90vh;
+    padding: 10px;
   }
 
+  h1 {
+    font-size: 1.5rem;
+  }
 
+  p {
+    font-size: 0.9rem;
+   margin-bottom: 10px;
+  }
 }
