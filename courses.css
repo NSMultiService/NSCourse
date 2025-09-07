@@ -7,11 +7,7 @@
         font-family: Arial, sans-serif;
       }
   
-      html, body {
-        width: 100%;
-        overflow-x: hidden; /* Supprime le scroll horizontal */
-      }
-  
+      
       body {
         background: linear-gradient(135deg, #f6d365, #fda085);
         display: flex;
@@ -27,6 +23,7 @@
         box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         max-width: 500px;
         width: 100%;
+        height: 95vh;
         padding: 15px;
         text-align: center;
         transition: transform 0.3s ease;
@@ -198,17 +195,33 @@
             flex-wrap: wrap;
             padding: 5px;
          }
+         #erreurBox{
+          margin-bottom: 0;
+         }
+         
+         #liste, #totalContainer{
+          margin-bottom: 5px !important;
+         }
   
          .actions{
             margin-left: 30px;
             gap: 15px;
          }
           
+         .container-home img {
+            width: 100%;
+            padding: 5px;
+            max-height: 120px;
+            margin-bottom: 7px;
+          }
+      
         .form button {
           width: 100%;
         }
   
         h1 {
           font-size: 1.5rem;
+            margin-bottom: 5px;
+           
         }
       }
