@@ -97,7 +97,7 @@ function ajouterArticle(articleObj) {
 
   // Bouton supprimer
   const btnSupprimer = document.createElement("button");
-  btnSupprimer.textContent = "Supp";
+  btnSupprimer.textContent = "Del";
   btnSupprimer.className = "delete-btn";
   btnSupprimer.onclick = () => {
     li.remove();
